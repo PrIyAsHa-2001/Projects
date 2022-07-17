@@ -1,0 +1,48 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<style>
+    #id2{
+ background-color: #DAA520;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin:0px;
+  padding:2px;
+  height:27px;
+  width:31%;
+  font-size:70%;
+}
+.container{
+    background:color:#DAA520;
+    color:white;
+}
+</style>
+<p align="center" style="margin-top:1%;font-size:18px">YOUR POSTS</p>
+
+    <div class="row" style="margin:5%">
+        {% for i in room %}
+        <div class="col-sm-3">
+            <div class="jumbotron" style="width:100%;border-radius:3%;padding:4%;background-color:black;">
+            <p style="color:white">{{i.title}} (Status :  {{i.status.status}})<hr></p>
+                <a href="{% url 'detail1' i.id %}" ><img src="{{i.img.url}}" style="border-radius:5%;width:100%;height:150px;"><hr></a>
+            <h4 style="color:white;font-size:20px">{{i.desc}}</h4>
+            <h4 style="color:white;font-size:20px">{{i.state.state}}</h4>
+            <h4 style="color:white">Rent : {{i.rent}} / month</h4>
+            <h4 style="color:white">Contact : {{i.register.mobile}}</h4>
+            <h4 style="color:white">Local Address : {{i.local_add}}</h4>
+                <a href="{% url 'owner' i.id %}"><img src="{{i.register.image.url}}" style="border-radius:50%;width:40px;height:30px"> Owner Detail</a><br>
+                <br><button id="id2"><a href="{% url 'room_img' i.id %}" style="color:black;font-weight:black;font-size:12px">ADD IMAGE</a></button>
+                <button id="id2"><a href="{% url 'edit_detail' i.state.id i.id %}" style="color:black;font-weight:black;font-size:12px">EDIT DETAILS</a></button>
+                <button id="id2"><a href="{% url 'delete' i.id %}" style="color:black;font-weight:black;font-size:12px">DELETE</a></button>
+
+
+            </div>
+
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<style>
+    #preview{
+	margin-top: 10px;
+
+}
+#samples{
+	text-align: center;
+}
+#samples img {
+	margin: 20px;
+	display: block;
+	 border: none;
+}
+.jumbotron{
+width:90%;
+padding:10px;
+
+}
+.container{
+width:90%;
+padding:10px;
+background:#FFD700;
+margin:100px auto;
+display:flex;
+justify-content:center;
+}
+img:hover{
+transform:scale(1.7);
+transition:all 1s linear;
+
+z-index:2;
+}
+
+</style>
+<p align="center" style="margin-top:1%;font-size:18px">You are searching home in <u><span style="color:black">{{dist.dist.dist}} </span></u></p>
+<div class="container">
+	<div class="row">
+        {% for i in img %}
+		<div align="center" class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="samples">
+            <h3 style="color:black;width:200px" align="center">{{i.room_name}}<hr></h3>
+			<img style="border-radius:8%;width:250px;height:200px;" onmousemove="zoomIn(event)" onmouseout="zoomOut()" src="{{i.img.url}}">
+		</div>
+        {% endfor %}
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+			<div id="preview" onmousemove="zoomIn(event)"></div>
+		</div>
+
+    </div></div>
+    <center>
+            <div class="jumbotron" style="margin:0%;background-color:black">
+            <h4 style="color:white">{{dist.desc}}</h4>
+            <h4 style="color:white">Rent : {{dist.rent}} Rs. / month</h4>
+            <h4 style="color:white">Contact : {{dist.register.mobile}}</h4>
+            <h4 style="color:white">Local Address : {{dist.local_add}}</h4>
+
+    </div></center>
+
+
+
+{% endblock %}

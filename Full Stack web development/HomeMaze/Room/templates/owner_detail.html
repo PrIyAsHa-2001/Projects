@@ -1,0 +1,39 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.jumbotron{
+
+  margin-left:25%;
+  margin-top:2%;
+  width:50%;
+  border:1px solid #DAA520;
+  border-radius:5px;
+}
+i{
+margin-left:2%;
+margin-right:2%;
+}
+</style><div align="center" class="jumbotron" style="padding:0%;background-color:white;color:#DAA520;font-size:30px;font-weight:bold">
+  OWNER DETAILS
+</div>
+
+      <div  class="jumbotron" align="left" style="margin-top:1%;background-color:white;color:black;font-weight:bold">
+        <div align="center" class="container">
+          <img src="{{own.register.image.url}}" style="width:40%" alt="Avatar"><hr>
+            <p>{{own.register.user.first_name}} {{own.register.user.last_name}}</p>
+
+        </div><hr>
+        <div class="container">
+          <p><i class="fa fa-briefcase"></i>Home Owner</p>
+          <p><i class="fa fa-home"></i>{{own.register.add}}</p>
+          <p><i class="fa fa-envelope"></i>{{own.register.user.email}}</p>
+          <p><i class="fa fa-phone"></i>{{own.register.mobile}}</p>
+          <hr>
+        </div>
+      </div>
+
+{% endblock %}

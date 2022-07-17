@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Home Maze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel = stylesheet href = "https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+   $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+  </script>
+    <style>
+    .button {
+  background-color: #DAA520; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.button1 {border-radius: 12px;}
+.button2 {border-radius: 12px;}
+
+th{
+background-color:black;
+color:white;
+}
+
+</style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="padding:0px;margin:0px;background-color:black;color:black;line-height:30px">
+  <div class="container-fluid" style="padding:0px;margin:0px">
+    <div class="navbar-header" style="margin-bottom:1px;margin-right:1px">
+      
+      <a class="navbar-brand" href="#"><span style="font-size:70px;color :#DAA520;font-weight:bold;line-height:60px"><i style="font-family:cursive">h</i></span><span style="font-size:40px;color:white;font-weight:bold;font-family:cursive">ome</span><span style="font-size:70px;color:#DAA520;font-weight:bold"><i style="font-family:cursive">m</i></span><span style="font-size:40px;color:white;font-weight:bold;font-family:cursive">aze</span>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'home' %}" style = "color : white" ><span class="glyphicon glyphicon-home" style="padding:20px;font-size:30px;font-weight:bold"></span>HOME</a></li>
+
+        <li><a href="{% url 'about' %}" style = "color : white"><span class="glyphicon glyphicon-book" style="padding:20px;font-size:30px;font-weight:bold"></span>ABOUT</a></li>
+        <li><a href="{% url 'contact' %}" style = "color : white"><span class="glyphicon glyphicon-phone" style="padding:20px;font-size:30px;font-weight:bold"></span>CONTACT</a></li>
+        
+        {% if not request.user.is_staff %}
+
+      
+
+      {% if request.user.username %}
+      <li><a href="{% url 'search' %}" style = "color : white"><span class="glyphicon glyphicon-search" style="padding:20px;font-size:30px;font-weight:bold"></span>SEARCH</a></li>
+
+        <li><a href="{% url 'rent1' %}" style = "color : white"><span class="glyphicon glyphicon-plus" style="padding:20px;font-size:30px;font-weight:bold"></span>ADD POST</a></li>
+      <li><a href="{% url 'img' %}" style = "color : white"><span class="glyphicon glyphicon-book" style="padding:20px;font-size:30px;font-weight:bold"></span>MY POSTS</a></li>
+    {% endif %}
+        {% else %}
+      <li><a href="{% url 'view_user' %}" style = "color : white"><span class="glyphicon glyphicon-View" style="padding:25px;line-height:80px ;font-size:35px;font-weight:bold"></span>USERS</a></li>
+      <li><a href="{% url 'request' %}" style = "color : white"><span class="glyphicon glyphicon-View" style="padding:25px ;font-size:35px;font-weight:bold"></span>REQUESTS</a></li>
+      <li><a href="{% url 'alladd' %}" style = "color : white"><span class="glyphicon glyphicon-View" style="font-size:35px;font-weight:bold;padding:25px"></span>POSTS</a></li>
+
+        <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="font-size:15px;color: white;line-height:90px">
+        STATES
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'add_state' %}" style="font-size:20px;color :black;">Add a State</a><br>
+        <a class="dropdown-item" href="{% url 'view_state' %}" style="font-size:20px;color : black;">All States</a>
+      </div>
+    </li>
+       <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="font-size:15px;color: white;line-height:90px;padding:15px">
+        DISTRICTS
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'add_dist' %}" style="font-size:20px;color : black">Add a District</a><br>
+        <a class="dropdown-item" href="{% url 'view_dist' %}" style="font-size:20px;color : black">View Districts</a>
+      </div>
+    </li>
+        {% endif %}
+    </ul>
+    {% if request.user.username %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'user_detail' %}" style="color:white;font-size:22px"> <span class="glyphicon glyphicon-user" style="padding:22px;font-size:30px"></span>Hi {{request.user.username}}</a></li>
+      <li><a href="{% url 'logout' %}" style="margin-right:30px"><span class="glyphicon glyphicon-log-out" style="padding:29px;font-size:20px"></span> LOGOUT</a></li>
+    </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-left">
+      <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user" style="padding:15px ; color : white;font-size:35px;font-weight:bold"></span>SIGN UP</a></li>
+      <li><a href="{% url 'signin' %}"><span class="glyphicon glyphicon-log-in" style="padding:15px ; color : white;font-size:35px;font-weight:bold"></span> LOGIN</a></li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+{% block body %}
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>

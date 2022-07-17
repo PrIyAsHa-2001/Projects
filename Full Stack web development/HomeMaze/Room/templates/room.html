@@ -1,0 +1,24 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<p align="center" style="margin-top:1%;font-size:18px">You are searching in <u><span style="color:black">{{dist.dist}}, {{dist.state.state}}</span></u>"</p>
+
+    <div class="row" style="margin:5%">
+        {% for i in room %}
+        {% ifequal i.status.status "accepted"  %}
+        <div class="col-sm-3">
+            <div class="jumbotron" style="width:100%;border-radius:4%;padding:4%;background-color:black">
+            <p style="color:#DAA520">{{i.title}}<hr></p>
+                <a href="{% url 'detail' i.id %}" ><img src="{{i.img.url}}" style="border-radius:8%;width:100%;height:150px;"><hr></a>
+            <h4 style="color:white">{{i.desc}}</h4>
+            <h4 style="color:white">Rent : {{i.rent}} Rs. / month</h4>
+            <h4 style="color:white">Contact : {{i.register.mobile}}</h4>
+            <h4 style="color:white">Local Address : {{i.local_add}}</h4>
+                <a href="{% url 'owner' i.id %}"><img src="{{i.register.image.url}}" style="border-radius:50%;width:30px;height:30px"> Owner Details</a>
+
+            </div>
+            </div>
+        {% endifequal %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

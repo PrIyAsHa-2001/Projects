@@ -1,0 +1,27 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<style>
+    input[type=text][type=password]{
+    border-radius:8px;
+    width:0px;
+    height:0px;
+    }
+    #bg{
+    background-size: 180px 90px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+</style>
+
+<div align="center" width="50%" style="color:#DAA520;border:1px solid white;border-radius:8px;background-color:white;padding:50px;font-weight:bold">
+
+        <h3><strong>ADD STATE</strong></h3><hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        STATE<br><input type="text" placeholder="Enter State name" name="state" style="border-radius:8px;width:600px;height:35px;color:black"><br><br>
+<input type="submit" value="Register" style="color:white;border-radius:8px;width:100px;height:35px;background-color:black;border:1px solid black;">
+    </form>
+
+    </div>
+{% endblock %}
