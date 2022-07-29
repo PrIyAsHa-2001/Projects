@@ -1,4 +1,4 @@
 Home Maze is an online platform where real estate trade is taking place in a much faster and newer manner. We not just help you with finding the ideal real estate, but also ensure that your buying journey is as smooth as it can be. We understand that while buying or renting a property, there are a lot of factors to be taken into consideration, like the locality, preferred area, budget, amenities, and a lot more. This is the perfect destination where you will end up finding the best suitable property available across India. Whether you are looking for a rented property or planning to build your dream abode, you can find anything and everything in real estate at our portal. We offer residential and commercial property listings for both sale and rent across the country.
 
 
-(https://youtu.be/vRDnUgOInuk)[Demo Link]
+[Demo Link](https://youtu.be/vRDnUgOInuk)
